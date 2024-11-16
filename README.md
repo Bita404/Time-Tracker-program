@@ -1,2 +1,4 @@
 # Time-Tracker-program
-python OOP project 
+
+# Rquirments 
+datetime library
