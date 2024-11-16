@@ -1,5 +1,18 @@
 class Project:
-    pass 
+    def __init__(self):
+      pass
+    
+    def Add_pro():
+        pass
+    
+    def Edit_pro():
+        pass
+    
+    def Remove_pro():
+        pass
+    
+    def Display_pro():
+        pass   
 
-class Task :
+class Task(Project): 
     pass 
