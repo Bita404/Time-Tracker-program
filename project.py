@@ -1,5 +1,4 @@
 
-
 class Project :
     name_List={}
     def __init__(self , project_name ):
@@ -8,12 +7,8 @@ class Project :
              Project.name_List[project_name] = self     
         else : 
             raise ValueError("This project Already exists ! ")   
-      
-    #def Add_pro(self , new_pro ):
-    #    if new_pro in self.projects:
-    #        raise ValueError(f" project '{new_pro}' Already exist ! ! ")
-    #    self.projects[new_pro] = [] # empty space for the new project tasks
-                     
+       
+       
     def Edit_pro(self,  old_name , new_name):
         if old_name not in Project.name_List :
              raise ValueError(f"'{old_name}' Invalid project name ! ")
