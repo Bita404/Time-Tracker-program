@@ -1,5 +1,5 @@
-from project import Project
-from task import Task
+from project import *
+from task import *
 
 def main():
     while True:
