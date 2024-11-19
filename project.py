@@ -24,9 +24,15 @@ class Project :
         if rem_pro in Project.name_List : 
             raise ValueError(f"'{rem_pro}' Invalid project ! ! ")
         del Project.name_List[rem_pro]
-    
-    def Display_pro():
-           print(f"{Project.name_List}")    
+        
+    @classmethod
+    def Display_pro(cls):
+        if not cls.name_List:
+            print("No Project has made yet :3 ")
+        else :
+            print("Projects :")
+            for name in cls.name_List:    
+               print(f"-{name}")    
              
     def __str__(self):
         return f"project : {self.project_name}"       
