@@ -11,4 +11,4 @@ class All(ABC):
       
     @abstractmethod
     def tasks_len():
-        pass
+        pass 
