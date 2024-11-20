@@ -1,5 +1,6 @@
 
 class Project :
+    # Add project
     name_List={}
     def __init__(self , project_name ):
         if project_name not in Project.name_List:
@@ -9,11 +10,12 @@ class Project :
             raise ValueError("This project Already exists ! ")   
        
        
-    def Edit_pro(self,  old_name , new_name):
-        if old_name not in Project.name_List :
-             raise ValueError(f"'{old_name}' Invalid project name ! ")
-        if new_name in Project.name_List :
-              raise ValueError(f" '{new_name}' Already exist  !!! try another name")
+    def Edit_pro(self , new_name):
+        if new_name  in Project.name_List :
+             raise ValueError(f"'{new_name}' Already exist  !!! try another name ")
+        del Project.name_List[self.project_name]
+        self.project_name = new_name
+        Project.name_List[new_name] = self
     
     def Remove_pro(self , rem_pro):
         if rem_pro in Project.name_List : 
@@ -39,5 +41,10 @@ p2 =Project("CLI")
 print(p2)
 #p3=Project("cake")
 #print(p3)
+
+Project.Display_pro()
+
+p1.Edit_pro( "bake")
+print(p1)
 
 Project.Display_pro()
