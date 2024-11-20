@@ -11,7 +11,7 @@ def main():
         print("5. Remove Project or Task")  # it has 2 options
         print("6. Mark a Task as Done ")
         print("7. Display")  # it has 2 options
-        print("8. Search")
+        print("8. Search")   # 2 options 
         print("9. Save ")  # data export
         print("10. Exit")
         
