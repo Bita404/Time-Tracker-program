@@ -49,4 +49,5 @@ Project.Display_pro()
 p1.Edit_pro( "bake")
 print(p1)
 
+p1.Remove_pro()
 Project.Display_pro()
