@@ -1,6 +1,6 @@
 
 class Project :
-    # Add project
+    ####### Add project #########
     name_List={}
     def __init__(self , project_name ):
         if project_name not in Project.name_List:
@@ -9,19 +9,21 @@ class Project :
         else : 
             raise ValueError("This project Already exists ! ")   
        
-       
+    #########  edit a project  ###########
     def Edit_pro(self , new_name):
         if new_name  in Project.name_List :
              raise ValueError(f"'{new_name}' Already exist  !!! try another name ")
         del Project.name_List[self.project_name]
         self.project_name = new_name
         Project.name_List[new_name] = self
-    
-    def Remove_pro(self , rem_pro):
-        if rem_pro in Project.name_List : 
-            raise ValueError(f"'{rem_pro}' Invalid project ! ! ")
-        del Project.name_List[rem_pro]
         
+    ############## Remove a Project #########
+    def Remove_pro(self):
+        if self.project_name not in Project.name_List : 
+            raise ValueError(f"'{self.project_name}' Invalid project ! ! ")
+        del Project.name_List[self.project_name]
+        
+    ####### Diaplay Projects List ##########    
     @classmethod
     def Display_pro(cls):
         if not cls.name_List:
@@ -34,7 +36,7 @@ class Project :
     def __str__(self):
         return f"project : {self.project_name}"       
 
-
+###################################
 p1 =Project("cake")
 print(p1)
 p2 =Project("CLI")
