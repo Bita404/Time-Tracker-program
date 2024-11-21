@@ -7,14 +7,14 @@ class ADD(ABC):
         self.project_list ={}
         
     
-    def Add_project(self , project_name ):
-        if project_name not in self.Project_list:
+    def Add_project(self, project_name ):
+        if project_name not in self.project_list:
              self.project_name = project_name
-             self.Project.name_List[project_name] = self
+             self.project.name_List[project_name] = self
              self.task_list ={}    
         else : 
             raise ValueError("This project Already exists ! ")
-        
+      
     def Add_task(self , name , description , association ):
         self.ID = ADD.gen_TID()
         self.name = name 
@@ -48,4 +48,6 @@ class ADD(ABC):
         pass 
     
     
+b1 = ADD.Add_project("cheese cake")
+t1 = ADD.Add_task("cheese" , "for the cream" , "cheese cake")
     
