@@ -16,28 +16,21 @@ class Project :
     def Add_data(self , task_to_add ): 
         if isinstance(task_to_add, Task):  #>>>>>>>> If its a Task object 
             if task_to_add.association != self.project_name:
-                 raise ValueError(f"Task '{task_to_add.name}' does not belong to project '{self.project_name}'!")
+                 raise ValueError(f"Task '{task_to_add.name}' does NOT belong to  '{self.project_name}' ! ! !")
             self.task_list[task_to_add.ID] = task_to_add
         elif isinstance(task_to_add, str):  #>>>>>>>> If its a task ID 
             for project in Project.name_List.values():
                  if task_to_add in project.task_list:
                     task = project.task_list[task_to_add]
                     if task.association != self.project_name:
-                        raise ValueError(f"Task '{task.name}' does not belong to project '{self.project_name}'!")
+                        raise ValueError(f"Task '{task.name}' does NOT belong to project '{self.project_name}'! ! !")
                     self.task_list[task.ID] = task
                     return
-            raise ValueError(f"Task with ID '{task_to_add}' not found!")
+            raise ValueError(f"Task with '{task_to_add}' ID Not Found ! !")
         else:
-            raise TypeError("Invalid input! Provide a Task object or a valid task ID.") 
-        ########################## another way to do that :
-        #if not isinstance(task, Task):
-        #    raise ValueError("Only instances of Task can be added.")
-        #if task.ID in self.task_list:
-        #    raise ValueError(f"Task ID '{task.ID}' already exists in the project '{self.project_name}'.")
-        #self.task_list[task.ID] = task     
-        
+            raise TypeError("Invalid input ! ! Enter an existing Task object or task ID ! ! ") 
          
-    ######### >>> edit a project <<< ###########
+    ############ >>> edit a project <<< ###########
     def Edit_pro(self , new_name):
         if new_name  in Project.name_List :
              raise ValueError(f"'{new_name}' Already exist  !!! try another name ")
@@ -51,7 +44,7 @@ class Project :
         if project_name:
             project = cls.name_List.get(project_name)
             if not project:
-                return f"No project found with name '{project_name}'"
+                return f"No project Found named '{project_name}' ! ! ! "
             print(f"\nProject Found: {project.project_name}")
             print("Tasks:")
             for task in project.task_list.values():
@@ -65,30 +58,35 @@ class Project :
                     if task.name == task_name:
                         found_tasks.append((project.project_name, task))
             if not found_tasks:
-                return f"No tasks found with name '{task_name}'"
+                return f"No '{task_name}' Found ! ! ! "
             print(f"\nTasks Found with Name '{task_name}':")
             for project_name, task in found_tasks:
                 print(f"Project: {project_name} | Task ID: {task.ID} | Name: {task.name} | Description: {task.description} "
-                      f"| Status: {'Done' if task.status else 'Not Done'} | Start: {task.start_time} | End: {task.end_time} "
-                      f"| Duration: {task.duration}")
+                      f"| Status: {'Done' if task.status else 'Not Done'} | Started at: {task.start_time} | Ended at: {task.end_time} "
+                      f"| Duration time: {task.duration}")
             return found_tasks
 
         else:
-            return "Provide either a project name or task name to search!"
+            return "Provide either a project name or task name to search ! ! !"
 
     ########>>>>>>>>>>>> REMOVE Functions <<<<<<<<<<###########
     ##.....remove task
     def Remove_task(self, task_id):       
         if task_id in self.task_list:
             del self.task_list[task_id]
+            print(f"'{task_id}' Task Removed Succesfully :3 ")
         else:
-            raise ValueError(f"Task ID '{task_id}' not found in project '{self.project_name}'.")     
+            raise ValueError(f"Task ID '{task_id}' Not Found in project '{self.project_name}'! ! !")     
     ##......remove project
-    def Remove_project(self):
-        if self.project_name not in Project.name_List : 
-            raise ValueError(f"'{self.project_name}' Invalid project ! ! ")
-        del Project.name_List[self.project_name]
-        
+    def Remove_project(self , pro_name):
+        if pro_name not in Project.name_List :
+            raise ValueError(f"'{pro_name}' Project Not Found ! !")
+        else :
+            del pro_name
+            self.task_list.clear()
+            print(f"Project '{pro_name}' and all its tasks Removed Succesfully :3 ")
+            
+
     #######>>>>>>>>>>>> DISPLAY functions <<<<<<<<<<<<##########
     #.........project 
     @classmethod
@@ -120,14 +118,14 @@ t1 = Task("food"  ,  "good for health" , "CLI" )
 p2.Add_data(t1)
 #p3=Project("cake")
 #print(p3)
-Project.Remove_task("Task2000")
+p2.Remove_task("Task1000")
 
 Project.Display_pro()
 
 p1.Edit_pro( "bake")
 print(p1)
 
-p1.Remove_pro()
+
 Project.Display_pro()
 p3 = Project("html")
 
