@@ -165,10 +165,24 @@ def main():
             else:
                 print(" brrrr... Invalid choice ! !")
                 
+        ######################>>>>>>>>>>>>>>> SAVE DATA        
         elif answer=="9":
-            pass
+            project_name = input("Enter the Project name to Save its data : ")
+            project = Project.name_List.get(project_name)
+            
+            if not project:
+                print(f"'{project_name}' Not Found ! !")
+            else:
+                filename =input("Enter a name for the Saving File :")
+                project.txt_file(f"{filename}")
+                
+        ############################>>>>>>>>>>> EXIT        
         elif answer=="10":
             print("ok Goodbye (*＾▽＾)／  Exiting ...")
             break
         else :
             print("Invalid choice ! ! ! Please choose a number (1-10) :3 ")
+            
+if __name__ == "__main__":
+    main()            
+            
