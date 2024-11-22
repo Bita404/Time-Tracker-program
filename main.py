@@ -180,7 +180,7 @@ def main():
             print("ok Goodbye (*＾▽＾)／  Exiting ...")
             break
         else :
-            print("Invalid choice ! ! ! Please choose a number (1-10) :3 ")
+            print("womp womp... Invalid choice ! ! ! Please choose a number (1-10) :3 ")
             
 if __name__ == "__main__":
     main()            
