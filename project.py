@@ -115,10 +115,11 @@ class Project :
         with open(file_name , "a") as file:
             time_now = datetime.datetime.now()
             time_now = time_now.strftime("%d/%m/%Y--%I:%M-%p")
+            file.write(F"Welcome To {file_name} :\n")
             file.write(f"Project: {self.project_name} | date:{time_now}\n")
             file.write("Tasks:\n")
             for task in self.task_list.values():
-                file.write(f"- {task.ID}: {task.name} | Status: {'Done' if task.status else 'Not Done'}\n")
+                file.write(f"- {task.ID}: {task.name} , Status: {'Done' if task.status else 'Not Done'}\n")
         print(f"Project data exported to '{file_name}'")
         
 
@@ -129,8 +130,6 @@ p2 =Project("CLI")
 print(p2)
 t1 = Task("food"  ,  "good for health" , "CLI" )
 p2.Add_data(t1)
-#p3=Project("cake")
-#print(p3)
 #p2.Remove_task("Task1000")
 
 Project.Display_pro()

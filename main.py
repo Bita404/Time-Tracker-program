@@ -1,5 +1,4 @@
 from project import *
-import sys
 from task import *
 
 def main():
