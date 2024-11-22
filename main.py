@@ -65,15 +65,106 @@ def main():
                     
         ########################>>>>>> EDIT TASK            
         elif answer =="4":
-            pass
+            project_name = input("Enter the associated project : ")
+            project = Project.name_List.get(project_name)
+            if not project:
+                print(f"Project '{project_name}' Not Found ! !  :3 ")
+            else:
+                task_id = input("Enter the task ID to Edit : ")
+                task = project.task_list.get(task_id)
+                if not task:
+                    print(f"Task ID '{task_id}' does Not Found in project '{project_name}' ! ! :3 ")
+                else:
+                    name = input("write a new task name OR press enter to skip to next detail : ") or None
+                    description = input("write a new task description OR press enter to skip to next detail: ") or None
+                    status = input("Mark as done? enter 'yes' if done OR press enter to skip if No: ").lower() or None
+                    start_time = input("Enter new start time (if u didnt mark ur task as done, time wont be saved !): ") or None
+                    end_time = input("Enter new end time (if u didnt mark ur task as done, time wont be saved !): ") or None
+
+                    try:
+                        task.Edit_task(name=name, description=description, status=bool(status),
+                                       start_time=start_time, end_time=end_time)
+                        print(f"'{task_id}' updated Successfully ^^ !")
+                        
+                    except ValueError as e:
+                        print(e)
+                        
+        #########################>>>>>>>> REMOVE
         elif answer =="5":
-            pass
+            option = input("Do you want to Remove a Project (1) OR a Task (2) ?? ")
+            
+            if option == "1":
+                project_name = input("Enter the name of the project to Remove : ")
+                try:
+                    Project.Remove_project(project_name)
+                    
+                except ValueError as e:
+                    print(e)
+                    
+            elif option == "2":
+                project_name = input("Enter the Associated Project for the Task: ")
+                project = Project.name_List.get(project_name)
+                
+                if not project:
+                    print(f"Project '{project_name}' Nor Found ! ! ")
+                else:
+                    task_id = input("Enter the task ID to Remove : ")
+                    try:
+                        project.Remove_task(task_id)
+                        print(f"Task '{task_id}' Removed Successfully ^^ !")
+                        
+                    except ValueError as e:
+                        print(e)
+            else:
+                print("Invalid choice! !")
+        ############################>>>>>> MARK        
         elif answer =="6":
-            pass
+            project_name = input("Enter the Associated Project for the task : ")
+            project = Project.name_List.get(project_name)
+            
+            if not project:
+                print(f"'{project_name}' Not Found ! !")
+            else:
+                task_id = input("Enter the task ID to Mark as Done : ")
+                task = project.task_list.get(task_id)
+                
+                if not task:
+                    print(f"ID '{task_id}' does Not Found in '{project_name}' Project ! !")
+                else:
+                    task.Mark_task()
+                    print(f"Task '{task_id}' Marked as Done ^^ ! !")
+                    
+        #####################>>>>>>>>>>>>>>>> DISPLAY            
         elif answer =="7":
-            pass
+            option = input("Do you want to display all Projects (1) OR All Tasks in a Project (2) ? ")
+            if option == "1":
+                
+                Project.Display_pro()
+                
+            elif option == "2":
+                project_name = input("Enter the project name: ")
+                project = Project.name_List.get(project_name)
+                if not project:
+                    print(f"Project '{project_name}' Not Found ! ! !")
+                else:
+                    for task in project.task_list.values():
+                        print(task)
+            else:
+                print("womp womp ! Invalid choice ! !")
+            
+        ######################>>>>>>>>>>>>>> SEARCH        
         elif answer=="8":
-            pass
+            option = input("Do you want to search for a Project (1) OR a Task (2) ? ")
+            if option == "1":
+                project_name = input("Enter the project name to Search : ")
+                Project.Search(project_name=project_name)
+                
+            elif option == "2":
+                task_name = input("Enter the task name to Search : ")
+                Project.Search(task_name=task_name)
+            else:
+                print(" brrrr... Invalid choice ! !")
+                
         elif answer=="9":
             pass
         elif answer=="10":
