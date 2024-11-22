@@ -111,8 +111,16 @@ class Project :
         return f"project : {self.project_name}"  
     
     ############>>>>>>>>  DATA EXPORT TO TXT FILE <<<<<<<<########## 
-    def txt_file():
-        pass  
+    def txt_file(self, file_name):  #.... project name and file name 
+        with open(file_name , "a") as file:
+            time_now = datetime.datetime.now()
+            time_now = time_now.strftime("%d/%m/%Y--%I:%M-%p")
+            file.write(f"Project: {self.project_name} | date:{time_now}\n")
+            file.write("Tasks:\n")
+            for task in self.task_list.values():
+                file.write(f"- {task.ID}: {task.name} | Status: {'Done' if task.status else 'Not Done'}\n")
+        print(f"Project data exported to '{file_name}'")
+        
 
 ###################################
 p1 =Project("cake")
@@ -139,3 +147,4 @@ Project.Search("CLI")
 Project.Search(task_name= "food")
 
 print(p3.task_list)
+p2.txt_file("test2")
