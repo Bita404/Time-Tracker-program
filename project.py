@@ -94,14 +94,19 @@ class Project :
         if not cls.name_List:
             print("No Project has made yet :3 ")
         else :
-            print("Projects :")
-            for name,pro in cls.name_List.items():    
-               print(f"-{name} , tasks {len(pro.task_list)}")  
+            print("All Projects :")
+            for pros,tasks in cls.name_List.items():    
+               print(f"-{pros} , tasks: {len(tasks.task_list)}")  
     #......task             
-    def Display():
-        pass
+    def Display_task(self):
+        if not self.task_list:
+            print(f"NO Tasks for '{self.project_name}' Found ! ! ! ")
+        else:
+            print(f"All Tasks in project '{self.project_name}':")
+            for i in self.task_list.values():
+                print(f"- {i.ID}: {i.name} | Status: {'Done' if i.status else 'Not Done'}")    
     
-    ################ str #######################    
+    ################ str (ignore this function plz '-' )#######################    
     def __str__(self):
         return f"project : {self.project_name}"  
     
@@ -118,9 +123,10 @@ t1 = Task("food"  ,  "good for health" , "CLI" )
 p2.Add_data(t1)
 #p3=Project("cake")
 #print(p3)
-p2.Remove_task("Task1000")
+#p2.Remove_task("Task1000")
 
 Project.Display_pro()
+p2.Display_task()
 
 p1.Edit_pro( "bake")
 print(p1)
