@@ -19,12 +19,51 @@ def main():
         
         answer = input("Choose an option ! ! (1-10): ")
         
+        
+        ###################>>>>>>>> ADD PROJECT
         if answer =="1":
-            pass
+            project_name = input("Enter the project name: ")
+            
+            try:
+                Project(project_name)
+                print(f"Project '{project_name}' Created Successfully ^^ ")
+            except ValueError as e:
+                print(e)
+                
+        #######################>>>> ADD TASK TO PROJECT        
         elif answer =="2":
-            pass
+            project_name = input("Enter the project for the association : ")
+            project = Project.name_List.get(project_name)
+            if not project:
+                print(f"Project '{project_name}' Not Found !!!! ")
+            else:
+                task_name = input("Enter task name: ")
+                description = input("Enter task description : ")
+                
+                try:
+                    task = Task(task_name, description, project_name)
+                    project.Add_data(task)
+                    print(f"Task '{task_name}' Added to '{project_name}' Successfully ^^ !")
+                    
+                except ValueError as e:
+                    print(e)
+                    
+        ######################>>>>>> EDIT PROJECT        
         elif answer =="3":
-            pass
+            old_name = input("Enter the project name to edit  : ")
+            project = Project.name_List.get(old_name)
+            if not project:
+                print(f"Project '{old_name}' Not Found ! ! ")
+            else:
+                new_name = input("Enter the new name : ")
+                try:
+                    project.Edit_pro(new_name)
+                    print(f"Project '{old_name}' Updated to '{new_name}' Successfully ^^ !")
+                    
+                except ValueError as e:
+                    print(e)
+                    
+        ########################>>>>>> EDIT TASK            
         elif answer =="4":
             pass
         elif answer =="5":
