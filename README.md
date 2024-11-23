@@ -6,7 +6,7 @@ a class that can add or edit the tasks and generate unique IDs for each task
 ## Project 
 this class uses Task class as well , Its a bigger class for both tasks and Projects management , It also associates the tasks to their project.
 
-Search ,Display , Remove , save as txt file are some of its Fuctions
+Search ,Display , Remove , save as txt file are some of its Functions
 ## main
 This is actually the Main menu which uses the Project and Task Functions to Run the commands
 ### The menu contaions :
