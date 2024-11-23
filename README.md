@@ -8,7 +8,7 @@ this class uses Task class as well , Its a bigger class for both tasks and Proje
 
 Search ,Display , Remove , save as txt file are some of its Functions
 ## main
-This is actually the Main menu which uses the Project and Task Functions to Run the commands
+This is actually the Main menu which uses the Project class and Task class Functions to Run the commands
 ### The menu contaions :
 xX--- Time Trackere App ---Xx
 1. Add Project
