@@ -146,8 +146,7 @@ def main():
                 if not project:
                     print(f"Project '{project_name}' Not Found ! ! !")
                 else:
-                    for task in project.task_list.values():
-                        print(task)
+                    project.Display_task()
             else:
                 print("womp womp ! Invalid choice ! !")
             

@@ -14,6 +14,9 @@ class Project :
         
     #######>>>>>>>> ADD AND ASSOCIATE TASK to a project <<<<<<<<<<<<<<<############
     def Add_data(self , task_to_add ): 
+        """
+        connects the task and its Project
+        """
         if isinstance(task_to_add, Task):  #>>>>>>>> If its a Task object 
             if task_to_add.association != self.project_name:
                  raise ValueError(f"Task '{task_to_add.name}' does NOT belong to  '{self.project_name}' ! ! !")
@@ -32,6 +35,8 @@ class Project :
          
     ############ >>> edit a project <<< ###########
     def Edit_pro(self , new_name):
+        """ Edit a Project name 
+        """
         if new_name  in Project.name_List :
              raise ValueError(f"'{new_name}' Already exist  !!! try another name ")
         del Project.name_List[self.project_name]
@@ -41,6 +46,9 @@ class Project :
     ######>>>>>>>>>>>> SEARCH for projects or tasks <<<<<<<<<<<<<<<##########
     @classmethod
     def Search(cls, project_name=None , task_name=None ):
+        """
+        Search project OR task by their name
+        """
         if project_name:
             project = cls.name_List.get(project_name)
             if not project:
@@ -67,7 +75,7 @@ class Project :
             return found_tasks
 
         else:
-            return "Provide either a project name or task name to search ! ! !"
+            return "Provide project name or task name to search ! ! !"
 
     ########>>>>>>>>>>>> REMOVE Functions <<<<<<<<<<###########
     ##.....remove task
@@ -103,8 +111,10 @@ class Project :
             print(f"NO Tasks for '{self.project_name}' Found ! ! ! ")
         else:
             print(f"All Tasks in project '{self.project_name}':")
-            for i in self.task_list.values():
-                print(f"- {i.ID}: {i.name} | Status: {'Done' if i.status else 'Not Done'}")    
+            for task in self.task_list.values():
+                print(f"- {task.ID}: {task.name} | Status: {'Done' if task.status else 'Not Done'} , "
+                f"Start: {task.start_time if task.start_time else None} | End: {task.end_time if task.end_time else None} | "
+                f"Duration: {task.duration if task.duration else None}" )   
     
     ################ str (ignore this function plz '-' )#######################    
     def __str__(self):

@@ -21,7 +21,7 @@ class Task:
   ######       >>>>>>  time validation  <<<<<<<<    
     def valid_time(self, time_input):
         """
-        Validates the time that if its float and between 1 and 24 representing hours 
+        Validates the time to be between 1 and 24 
         """
         try:
             time_float = float(time_input)
@@ -34,7 +34,7 @@ class Task:
  #######> >>>>>>> Edit <<<<<<< 
     def Edit_task(self , name=None , description= None  , status = None, start_time =None, end_time=None , duration= None ):
         """
-        edit any detail of the tasks like name , description , status and start or end time 
+        edit any detail of the tasks like name  description  status start or end time 
         """
         if name :
             self.name = name 
@@ -68,6 +68,9 @@ class Task:
           
     #####..... Mark as Done ....####    
     def Mark_task(self):
+        """
+        Mark Task as Done 
+        """
         self.status = True
         return self.status 
     
