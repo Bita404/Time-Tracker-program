@@ -1,4 +1,4 @@
-# :bookmark: Time-Tracker-program :alarm_clock:
+# :alarm_clock: Time-Tracker-program :alarm_clock:
 This is an OOP Project that manages your Projects and their Tasks(Each project has a unique name and can contain multiple tasks) with basic CRUD operations. it can even track your tasks time and calculate their durations. its also able to export your project data to txt file.
 Errors are handled 
 ## Task 
