@@ -2,7 +2,7 @@
 This is an OOP Project that manages your Projects and their Tasks(Each project has a unique name and can contain multiple tasks) with basic CRUD operations. it can even track your tasks time and calculate their durations. its also able to export your project data to txt file.
 Errors are handled 
 ## Task 
-a class that can add or edit the tasks and generate IDs 
+a class that can add or edit the tasks and generate unique IDs for each task  
 ## Project 
 this class uses Task class as well , Its a bigger class for both tasks and Projects management , It also associates the tasks to their project.
 
